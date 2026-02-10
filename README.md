@@ -2,15 +2,16 @@
 BrandCraft is a Generative AI-powered branding automation system built using Flask and SQLite
 
 # Feature
--Generate brand names, taglines, and descriptions.
--Target audience suggestions
--color palette generation
--Instagram bio + brand kit output
--Tech Stack
--Python (Flask)
--SQLite
--HTML/CSS (Templates)
--OpenAI API
+ -Generate brand names, taglines, and descriptions.
+ -Target audience suggestions
+ -color palette generation
+ -Instagram bio + brand kit output
+
+#Tech Stack
+ -Python (Flask)
+ -SQLite
+ -HTML/CSS (Templates)
+ -OpenAI API
 
 
 # How To Run
