@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrandCraft | AI Branding Automation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=15">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">BrandCraft.ai</div>
+
+        <div class="nav-menu-pill">
+            <a href="/" class="active">Home</a>
+            <a href="/history">History</a>
+            <a href="#">About</a>
+        </div>
+
+        <a href="#" class="btn-nav-small">Get Started</a>
+    </nav>
+
+    <div class="container">
+        <header class="hero">
+            <h1>AI-Powered Branding<br>For Smarter Business</h1>
+            <p>Turn chaos into clarity. Automate naming, design tokens, and identity creation with BrandCraft.</p>
+            <div class="hero-btns">
+                <button class="btn-glow-primary"
+                    onclick="document.getElementById('generator-section').scrollIntoView({behavior: 'smooth'})">Start
+                    Creating</button>
+                <button class="btn-outline-hero" id="demoBtn">View Demo</button>
+            </div>
+        </header>
+
+        <section class="generator-section" id="brandFormSection">
+            <form id="brandForm">
+                <div class="form-group">
+                    <label for="idea">Business Idea / Description</label>
+                    <textarea id="idea" name="idea"
+                        placeholder="e.g. A subscription service for exotic teas tailored to mindfulness enthusiasts."
+                        required></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="style">Brand Style</label>
+                        <select id="style" name="style">
+                            <option value="Modern">Modern</option>
+                            <option value="Minimal">Minimal</option>
+                            <option value="Luxury">Luxury</option>
+                            <option value="Bold">Bold</option>
+                            <option value="Playful">Playful</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="audience">Target Audience (Optional)</label>
+                        <input type="text" id="audience" name="audience"
+                            placeholder="e.g. Millennials, Professionals, Gamers">
+                    </div>
+                </div>
+
+                <button type="submit" id="generateBtn">
+                    <span class="btn-text">Generate Branding</span>
+                    <span class="loader hidden"></span>
+                </button>
+            </form>
+        </section>
+
+        <!-- Dummy Trusted By Section -->
+        <section class="trusted-by">
+            <p>Companies who accelerated their growth with BrandCraft</p>
+            <div class="logos">
+                <span>INTEL</span>
+                <span>NVIDIA</span>
+                <span>STRIPE</span>
+                <span>IPSUM</span>
+                <span>LORUM</span>
+            </div>
+        </section>
+
+        <section id="resultSection" class="results-container hidden">
+            <div class="results-header">
+                <h2>Your Brand Identity</h2>
+                <div class="action-buttons">
+                    <button class="btn-secondary" id="copyBtn">Copy All</button>
+                    <button class="btn-secondary" id="downloadBtn">Download TXT</button>
+                </div>
+            </div>
+
+            <div class="card-grid">
+                <!-- Brand Names -->
+                <div class="card">
+                    <h3>Brand Names</h3>
+                    <ul id="brandNamesList"></ul>
+                </div>
+
+                <!-- Tagline -->
+                <div class="card">
+                    <h3>Tagline</h3>
+                    <p id="tagline" class="highlight-text"></p>
+                </div>
+
+                <!-- Description -->
+                <div class="card full-width">
+                    <h3>Brand Description</h3>
+                    <p id="description"></p>
+                </div>
+
+                <!-- Target Audience -->
+                <div class="card">
+                    <h3>Target Audience</h3>
+                    <p id="targetAudienceResult"></p>
+                </div>
+
+                <!-- Color Palette -->
+                <div class="card">
+                    <h3>Color Palette</h3>
+                    <div class="color-palette" id="colorPalette"></div>
+                </div>
+
+                <!-- Instagram Bio -->
+                <div class="card">
+                    <h3>Instagram Bio</h3>
+                    <p id="instagramBio" class="bio-text"></p>
+                </div>
+
+                <!-- Logo Prompt -->
+                <div class="card full-width">
+                    <h3>Logo Design Prompt</h3>
+                    <div class="code-block">
+                        <code id="logoPrompt"></code>
+                        <button class="copy-tiny" onclick="copyText('logoPrompt')">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        &copy; 2025 BrandCraft. Powered by Hugging Face.
+    </footer>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+
+</html>
