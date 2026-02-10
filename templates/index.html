@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrandCraft | AI Branding Automation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=18">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">BrandCraft.ai</div>
+
+        <div class="nav-menu-pill">
+            <a href="/" class="active">Home</a>
+            <a href="/history">History</a>
+            <a href="#">About</a>
+        </div>
+
+        <a href="#" class="btn-nav-small">Get Started</a>
+    </nav>
+
+    <div class="container">
+        <header class="hero">
+            <h1>AI-Powered Branding<br>For Smarter Business</h1>
+            <p>Turn chaos into clarity. Automate naming, design tokens, and identity creation with BrandCraft.</p>
+            <div class="hero-btns">
+                <button class="btn-glow-primary"
+                    onclick="document.getElementById('generator-section').scrollIntoView({behavior: 'smooth'})">Start
+                    Creating</button>
+                <button class="btn-outline-hero" id="demoBtn">View Demo</button>
+            </div>
+        </header>
+
+        <!-- Made With BrandCraft Section -->
+        <section class="trusted-by" style="margin-top: 0; margin-bottom: 3rem;">
+            <p style="margin-bottom: 2rem; opacity: 0.7;">Made with BrandCraft</p>
+            <div class="showcase-grid">
+                <!-- Logo 1: Nova (Modern) -->
+                <div class="showcase-card">
+                    <div class="logo-display">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="60" height="60" rx="12" fill="#2563EB" />
+                            <path d="M30 15L45 45H15L30 15Z" fill="white" fill-opacity="0.9" />
+                            <circle cx="30" cy="35" r="5" fill="#2563EB" />
+                        </svg>
+                        <span class="logo-text"
+                            style="font-family: 'Inter', sans-serif; font-weight: 700; letter-spacing: -1px;">Nova</span>
+                    </div>
+                </div>
+
+                <!-- Logo 2: Bloom (Playful) -->
+                <div class="showcase-card">
+                    <div class="logo-display">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="30" cy="30" r="30" fill="#F43F5E" />
+                            <path d="M30 10C35 10 38 15 38 20C38 28 30 35 30 35C30 35 22 28 22 20C22 15 25 10 30 10Z"
+                                fill="#FDE047" />
+                            <path d="M30 35L30 50" stroke="white" stroke-width="4" stroke-linecap="round" />
+                            <path d="M30 40L40 35" stroke="white" stroke-width="4" stroke-linecap="round" />
+                        </svg>
+                        <span class="logo-text"
+                            style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #F43F5E;">Bloom</span>
+                    </div>
+                </div>
+
+                <!-- Logo 3: Aura (Luxury) -->
+                <div class="showcase-card">
+                    <div class="logo-display">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="60" height="60" fill="#1C1917" />
+                            <circle cx="30" cy="30" r="20" stroke="#FBBF24" stroke-width="2" />
+                            <path d="M30 15V30L40 40" stroke="#FBBF24" stroke-width="2" />
+                        </svg>
+                        <span class="logo-text"
+                            style="font-family: 'Times New Roman', serif; font-weight: 400; letter-spacing: 2px;">AURA</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="generator-section" id="brandFormSection">
+            <form id="brandForm">
+                <div class="form-group">
+                    <label for="idea">Business Idea / Description</label>
+                    <textarea id="idea" name="idea"
+                        placeholder="e.g. A subscription service for exotic teas tailored to mindfulness enthusiasts."
+                        required></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="style">Brand Style</label>
+                        <select id="style" name="style">
+                            <option value="Modern">Modern</option>
+                            <option value="Minimal">Minimal</option>
+                            <option value="Luxury">Luxury</option>
+                            <option value="Bold">Bold</option>
+                            <option value="Playful">Playful</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="audience">Target Audience (Optional)</label>
+                        <input type="text" id="audience" name="audience"
+                            placeholder="e.g. Millennials, Professionals, Gamers">
+                    </div>
+                </div>
+
+                <button type="submit" id="generateBtn">
+                    <span class="btn-text">Generate Branding</span>
+                    <span class="loader hidden"></span>
+                </button>
+            </form>
+        </section>
+
+
+        <section id="resultSection" class="results-container hidden">
+            <div class="results-header">
+                <h2>Your Brand Identity</h2>
+                <div class="action-buttons">
+                    <button class="btn-secondary" id="copyBtn">Copy All</button>
+                    <button class="btn-secondary" id="downloadBtn">Download TXT</button>
+                </div>
+            </div>
+
+            <div class="card-grid">
+                <!-- Brand Names -->
+                <div class="card">
+                    <h3>Brand Names</h3>
+                    <ul id="brandNamesList"></ul>
+                </div>
+
+                <!-- Tagline -->
+                <div class="card">
+                    <h3>Tagline</h3>
+                    <p id="tagline" class="highlight-text"></p>
+                </div>
+
+                <!-- Description -->
+                <div class="card full-width">
+                    <h3>Brand Description</h3>
+                    <p id="description"></p>
+                </div>
+
+                <!-- Target Audience -->
+                <div class="card">
+                    <h3>Target Audience</h3>
+                    <p id="targetAudienceResult"></p>
+                </div>
+
+                <!-- Color Palette -->
+                <div class="card">
+                    <h3>Color Palette</h3>
+                    <div class="color-palette" id="colorPalette"></div>
+                </div>
+
+                <!-- Instagram Bio -->
+                <div class="card">
+                    <h3>Instagram Bio</h3>
+                    <p id="instagramBio" class="bio-text"></p>
+                </div>
+
+                <!-- Generated Logo Visual -->
+                <div class="card full-width" style="text-align: center;">
+                    <h3>Logo Concept</h3>
+                    <div id="generatedLogoContainer" style="display: flex; justify-content: center; margin: 1rem 0;">
+                        <!-- SVG will be injected here -->
+                    </div>
+                </div>
+
+                <!-- Logo Prompt -->
+                <div class="card full-width">
+                    <h3>Logo Design Prompt</h3>
+                    <div class="code-block">
+                        <code id="logoPrompt"></code>
+                        <button class="copy-tiny" onclick="copyText('logoPrompt')">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+    <script src="{{ url_for('static', filename='app.js') }}?v=2"></script>
+</body>
+
+</html>
